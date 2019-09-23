@@ -179,11 +179,13 @@ if has-session ; then
   # select-pane -t 1
   # send-keys 'tty-clock -c -C 3' C-m \; \
 else
-  echo "new session"
   tmux new-session -s main \; \
-    split-window -v -p 12 \; \
-    send-keys 'tty-clock -c -C 3' C-m \; \
-    select-pane -t 0 \; 
+  	split-window -v -p 88 \; \
+  	select-pane -t 0 \; \
+  	send-keys 'tty-clock -c -C 3' C-m \; \
+  	split-window -h\; \
+  	send-keys 'watch -c -d -t -n 120 ~/./mycaltmux.sh' C-m \; \
+  	select-pane -t 2 \;
 fi
 
 home
